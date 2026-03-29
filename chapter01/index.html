@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Created with EduFlow" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>우리가 만들 앱 미리보기 - AI Studio와 Firebase로 만드는 나의 첫 웹앱 - 방과후학교 신청 앱</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../stylesheets/custom.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "\uc6b0\ub9ac\uac00 \ub9cc\ub4e4 \uc571 \ubbf8\ub9ac\ubcf4\uae30";
+        var mkdocs_page_input_path = "chapter01.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> AI Studio와 Firebase로 만드는 나의 첫 웹앱 - 방과후학교 신청 앱
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part 1 - [1권] Part 1: 출발 준비 - 개발 환경 세팅하기</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">우리가 만들 앱 미리보기</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#_2">🎯 이 장에서 배우는 것</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_3">📚 핵심 개념</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#_4">개념: 우리가 만들 웹앱</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_5">웹앱이란?</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#5">사용할 도구 5가지</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_6">⚠️ 주의할 점</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_7">✅ 점검하기</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_8">🔗 다음 장 미리보기</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chapter02/">Node.js 설치하기</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chapter03/">Firebase 프로젝트 만들기</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chapter04/">Firebase CLI 설치하고 로그인하기</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part 2 - [1권] Part 2: AI로 앱 만들기 - 학생용 신청 화면 완성</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../chapter05/">AI Studio Build로 학생용 앱 코드 생성하기</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chapter06/">Firebase Realtime Database 설정하기</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chapter07/">앱과 Firebase 연동하기</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chapter08/">Firebase Hosting으로 앱 배포하기</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part 3 - [2권] Part 3: 기능 확장 - 교사용 관리 화면 추가</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../chapter09/">교사용 관리 페이지 코드 생성하기</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chapter10/">신청 데이터 수정·삭제 기능 구현하기</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chapter11/">CSV 다운로드 기능 추가하기</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part 4 - [2권] Part 4: 완성과 확장 - 나만의 앱으로 만들기</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../chapter12/">최종 테스트하고 재배포하기</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chapter13/">나만의 앱으로 커스터마이징하기</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chapter14/">배포 성공! 다음 단계 안내</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">AI Studio와 Firebase로 만드는 나의 첫 웹앱 - 방과후학교 신청 앱</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Part 1 - [1권] Part 1: 출발 준비 - 개발 환경 세팅하기</li>
+      <li class="breadcrumb-item active">우리가 만들 앱 미리보기</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="_1">우리가 만들 앱 미리보기<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<h2 id="_2">🎯 이 장에서 배우는 것<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 완성된 방과후학교 신청 앱의 모습과 기능을 설명할 수 있다</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 웹앱이 무엇인지 일상 속 예시를 들어 설명할 수 있다</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 이 프로젝트에서 사용할 도구 5가지의 역할을 구분할 수 있다</li>
+</ul>
+<hr />
+<h2 id="_3">📚 핵심 개념<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h3 id="_4">개념: 우리가 만들 웹앱<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p>우리가 4시간(14차시) 동안 만들 앱은 <strong>방과후학교 수업 신청 웹앱</strong>입니다.</p>
+<p><strong>두 가지 화면</strong>으로 구성돼요.</p>
+<ul>
+<li>🙋 <strong>학생용 화면</strong> — 원하는 수업을 골라 신청하는 화면</li>
+<li>👩‍🏫 <strong>교사용 화면</strong> — 누가 어떤 수업을 신청했는지 한눈에 관리하는 화면</li>
+</ul>
+<h3 id="_5">웹앱이란?<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>"웹앱은 마치 <strong>카카오톡으로 링크를 공유</strong>하는 것과 같아요."</p>
+</blockquote>
+<p>별도로 앱을 설치할 필요 없이, <strong>링크만 클릭하면 바로 열리는 앱</strong>이 웹앱입니다. 크롬, 사파리 같은 브라우저에서 바로 동작하죠. 우리가 만들 신청 앱도 학생들에게 링크만 보내면 끝! 📱💻</p>
+<h3 id="5">사용할 도구 5가지<a class="headerlink" href="#5" title="Permanent link">&para;</a></h3>
+<p>요리에 비유하면 이해가 쉬워요. 🍳</p>
+<ul>
+<li><strong>AI Studio Build</strong> — 🧑‍🍳 AI 요리사. 코드를 자동으로 만들어줌</li>
+<li><strong>Firebase</strong> — 🗄️ 냉장고. 신청 데이터를 저장하고 꺼내줌</li>
+<li><strong>Next.js</strong> — 🍽️ 그릇. 화면을 예쁘게 보여주는 틀</li>
+<li><strong>Node.js</strong> — 🔥 가스레인지. 코드가 실행되는 환경</li>
+<li><strong>VS Code</strong> — 🔪 도마와 칼. 코드를 편집하는 작업 공간</li>
+</ul>
+<div class="mermaid">flowchart LR
+    A["🧑‍🍳 AI Studio Build&lt;br/&gt;코드 생성"] --&gt; B["🔪 VS Code&lt;br/&gt;코드 편집"]
+    B --&gt; C["🔥 Node.js&lt;br/&gt;실행 환경"]
+    C --&gt; D["🍽️ Next.js&lt;br/&gt;화면 표시"]
+    D --&gt; E["🗄️ Firebase&lt;br/&gt;데이터 저장"]</div>
+<hr />
+<h2 id="_6">⚠️ 주의할 점<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<ul>
+<li>지금은 도구를 <strong>설치하지 않아도</strong> 됩니다. 다음 차시부터 하나씩 세팅해요!</li>
+<li>코딩을 몰라도 괜찮아요. AI가 코드를 만들어주고, 우리는 <strong>조립하고 이해하는 역할</strong>입니다 😊</li>
+</ul>
+<hr />
+<h2 id="_7">✅ 점검하기<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<p><strong>1. 웹앱의 가장 큰 특징은 무엇인가요?</strong></p>
+<details><summary>정답 확인</summary>앱 설치 없이 브라우저에서 링크만 클릭하면 바로 사용할 수 있다는 점입니다.</details>
+
+<p><strong>2. Firebase는 어떤 역할을 하나요?</strong></p>
+<details><summary>정답 확인</summary>냉장고처럼 데이터를 저장하고 꺼내주는 역할을 합니다. 학생들의 신청 정보가 여기에 저장됩니다.</details>
+
+<p><strong>3. 우리가 만들 앱의 두 가지 화면은?</strong></p>
+<details><summary>정답 확인</summary>학생이 수업을 신청하는 "학생용 화면"과, 신청 현황을 관리하는 "교사용 화면"입니다.</details>
+
+<hr />
+<h2 id="_8">🔗 다음 장 미리보기<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<p>다음 시간에는 <strong>Node.js와 VS Code를 설치</strong>합니다. 우리의 요리 도구 세트를 하나씩 꺼내볼 거예요! 🛠️</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href=".." class="btn btn-neutral float-left" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../chapter02/" class="btn btn-neutral float-right" title="Node.js 설치하기">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href=".." style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../chapter02/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="https://unpkg.com/mermaid@10/dist/mermaid.min.js"></script>
+      <script src="../javascripts/title-link.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

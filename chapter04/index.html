@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Created with EduFlow" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Firebase CLI 설치하고 로그인하기 - AI Studio와 Firebase로 만드는 나의 첫 웹앱 - 방과후학교 신청 앱</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../stylesheets/custom.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Firebase CLI \uc124\uce58\ud558\uace0 \ub85c\uadf8\uc778\ud558\uae30";
+        var mkdocs_page_input_path = "chapter04.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> AI Studio와 Firebase로 만드는 나의 첫 웹앱 - 방과후학교 신청 앱
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part 1 - [1권] Part 1: 출발 준비 - 개발 환경 세팅하기</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../chapter01/">우리가 만들 앱 미리보기</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chapter02/">Node.js 설치하기</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chapter03/">Firebase 프로젝트 만들기</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Firebase CLI 설치하고 로그인하기</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#_1">🎯 이 장에서 배우는 것</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_2">📚 핵심 개념</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#cli-command-line-interface">개념: CLI (Command Line Interface)</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_3">🔨 따라하기</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#step-1-firebase-cli">Step 1: Firebase CLI 설치하기</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#step-2-google">Step 2: Google 계정으로 로그인하기</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_4">⚠️ 주의할 점</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_5">✅ 점검하기</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_6">🔗 다음 장 미리보기</a>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part 2 - [1권] Part 2: AI로 앱 만들기 - 학생용 신청 화면 완성</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../chapter05/">AI Studio Build로 학생용 앱 코드 생성하기</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chapter06/">Firebase Realtime Database 설정하기</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chapter07/">앱과 Firebase 연동하기</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chapter08/">Firebase Hosting으로 앱 배포하기</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part 3 - [2권] Part 3: 기능 확장 - 교사용 관리 화면 추가</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../chapter09/">교사용 관리 페이지 코드 생성하기</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chapter10/">신청 데이터 수정·삭제 기능 구현하기</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chapter11/">CSV 다운로드 기능 추가하기</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part 4 - [2권] Part 4: 완성과 확장 - 나만의 앱으로 만들기</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../chapter12/">최종 테스트하고 재배포하기</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chapter13/">나만의 앱으로 커스터마이징하기</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chapter14/">배포 성공! 다음 단계 안내</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">AI Studio와 Firebase로 만드는 나의 첫 웹앱 - 방과후학교 신청 앱</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Part 1 - [1권] Part 1: 출발 준비 - 개발 환경 세팅하기</li>
+      <li class="breadcrumb-item active">Firebase CLI 설치하고 로그인하기</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="chapter-4-firebase-cli">Chapter 4: Firebase CLI 설치하고 로그인하기<a class="headerlink" href="#chapter-4-firebase-cli" title="Permanent link">&para;</a></h1>
+<h2 id="_1">🎯 이 장에서 배우는 것<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> npm 명령어로 Firebase CLI를 설치할 수 있다</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> firebase login으로 Google 계정 인증을 완료할 수 있다</li>
+</ul>
+<hr />
+<h2 id="_2">📚 핵심 개념<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h3 id="cli-command-line-interface">개념: CLI (Command Line Interface)<a class="headerlink" href="#cli-command-line-interface" title="Permanent link">&para;</a></h3>
+<p><strong>"CLI는 마치 문자 메시지로 컴퓨터에게 심부름을 시키는 것과 같아요."</strong></p>
+<p>마우스로 클릭하는 대신, 글자를 타이핑해서 컴퓨터에게 명령을 내리는 방식입니다. Firebase CLI를 설치하면, 터미널에서 글자 몇 줄만으로 우리 프로젝트를 Firebase 서버에 배포할 수 있게 됩니다. 🚀</p>
+<hr />
+<h2 id="_3">🔨 따라하기<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h3 id="step-1-firebase-cli">Step 1: Firebase CLI 설치하기<a class="headerlink" href="#step-1-firebase-cli" title="Permanent link">&para;</a></h3>
+<p>VS Code에서 터미널을 열고(<code>Ctrl + `</code>), 아래 명령어를 입력하세요.</p>
+<p><strong>명령어:</strong>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>npm<span class="w"> </span>install<span class="w"> </span>-g<span class="w"> </span>firebase-tools
+</span></code></pre></div></p>
+<blockquote>
+<p>💡 <code>-g</code>는 "global(전역)"의 약자예요. 어떤 폴더에서든 <code>firebase</code> 명령어를 쓸 수 있도록 컴퓨터 전체에 설치하라는 뜻입니다.</p>
+</blockquote>
+<p>설치 중 여러 줄의 메시지가 쭉 올라갑니다. 당황하지 마세요! 정상입니다. 설치가 끝나면 아래 명령어로 확인해봅니다.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>firebase<span class="w"> </span>--version
+</span></code></pre></div>
+<p><strong>실행 결과 (예시):</strong>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>13.15.1
+</span></code></pre></div></p>
+<p>버전 숫자가 나오면 설치 성공입니다! 🎉</p>
+<hr />
+<h3 id="step-2-google">Step 2: Google 계정으로 로그인하기<a class="headerlink" href="#step-2-google" title="Permanent link">&para;</a></h3>
+<p>이제 Firebase에 "나 이 컴퓨터의 주인이야!"라고 알려줄 차례입니다.</p>
+<p><strong>명령어:</strong>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>firebase<span class="w"> </span>login
+</span></code></pre></div></p>
+<p><strong>진행 순서:</strong></p>
+<ol>
+<li>터미널에 <code>Allow Firebase to collect CLI usage...?</code> 라고 물어보면 → <strong>Y</strong> 입력 후 Enter</li>
+<li>🌐 <strong>브라우저가 자동으로 열립니다</strong> → Chapter 2에서 만든 Google 계정으로 로그인</li>
+<li>"Firebase CLI가 Google 계정에 액세스하도록 허용"에서 <strong>허용</strong> 클릭</li>
+<li>"Woohoo!" 또는 ✅ 성공 메시지가 브라우저에 나타남</li>
+</ol>
+<p><strong>터미널 결과:</strong>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>✔ Success! Logged in as yourname@gmail.com
+</span></code></pre></div></p>
+<p>이 메시지가 보이면 로그인 완료입니다! 👏</p>
+<hr />
+<h2 id="_4">⚠️ 주의할 점<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong><code>npm</code> 명령어가 안 된다면?</strong> → Chapter 3의 Node.js 설치가 정상적으로 되었는지 확인하세요</li>
+<li><strong>브라우저가 자동으로 안 열린다면?</strong> → 터미널에 표시된 URL을 직접 복사해서 브라우저에 붙여넣기 하세요</li>
+</ul>
+<hr />
+<h2 id="_5">✅ 점검하기<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<p><strong>1. Firebase CLI가 정상 설치되었는지 확인하는 명령어는?</strong></p>
+<details><summary>정답 확인</summary>
+
+`firebase --version` — 버전 번호가 출력되면 성공!
+
+</details>
+
+<p><strong>2. <code>npm install -g</code>에서 <code>-g</code>의 의미는?</strong></p>
+<details><summary>정답 확인</summary>
+
+global(전역) 설치. 특정 폴더가 아니라 컴퓨터 어디서든 해당 명령어를 사용할 수 있게 합니다.
+
+</details>
+
+<p><strong>3. <code>firebase login</code> 후 성공하면 터미널에 어떤 메시지가 나오나요?</strong></p>
+<details><summary>정답 확인</summary>
+
+`✔ Success! Logged in as 본인이메일@gmail.com`
+
+</details>
+
+<hr />
+<h2 id="_6">🔗 다음 장 미리보기<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<p>CLI 설치와 로그인까지 끝났습니다! 다음 장에서는 <strong>실제 프로젝트 폴더를 만들고 Firebase 프로젝트와 연결</strong>하는 작업을 해볼 거예요. 드디어 본격적인 개발 시작입니다! 💪</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../chapter03/" class="btn btn-neutral float-left" title="Firebase 프로젝트 만들기"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../chapter05/" class="btn btn-neutral float-right" title="AI Studio Build로 학생용 앱 코드 생성하기">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../chapter03/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../chapter05/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="https://unpkg.com/mermaid@10/dist/mermaid.min.js"></script>
+      <script src="../javascripts/title-link.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

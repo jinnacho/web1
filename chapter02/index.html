@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Created with EduFlow" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Node.js 설치하기 - AI Studio와 Firebase로 만드는 나의 첫 웹앱 - 방과후학교 신청 앱</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../stylesheets/custom.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Node.js \uc124\uce58\ud558\uae30";
+        var mkdocs_page_input_path = "chapter02.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> AI Studio와 Firebase로 만드는 나의 첫 웹앱 - 방과후학교 신청 앱
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part 1 - [1권] Part 1: 출발 준비 - 개발 환경 세팅하기</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../chapter01/">우리가 만들 앱 미리보기</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Node.js 설치하기</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#_1">🎯 이 장에서 배우는 것</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_2">📚 핵심 개념</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#nodejs_1">개념: Node.js</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_3">🔨 따라하기</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#step-1-nodejs">Step 1: Node.js 다운로드 &amp; 설치</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#step-2">Step 2: 설치 확인하기</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_4">⚠️ 주의할 점</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_5">✅ 점검하기</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_6">🔗 다음 장 미리보기</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chapter03/">Firebase 프로젝트 만들기</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chapter04/">Firebase CLI 설치하고 로그인하기</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part 2 - [1권] Part 2: AI로 앱 만들기 - 학생용 신청 화면 완성</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../chapter05/">AI Studio Build로 학생용 앱 코드 생성하기</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chapter06/">Firebase Realtime Database 설정하기</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chapter07/">앱과 Firebase 연동하기</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chapter08/">Firebase Hosting으로 앱 배포하기</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part 3 - [2권] Part 3: 기능 확장 - 교사용 관리 화면 추가</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../chapter09/">교사용 관리 페이지 코드 생성하기</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chapter10/">신청 데이터 수정·삭제 기능 구현하기</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chapter11/">CSV 다운로드 기능 추가하기</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part 4 - [2권] Part 4: 완성과 확장 - 나만의 앱으로 만들기</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../chapter12/">최종 테스트하고 재배포하기</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chapter13/">나만의 앱으로 커스터마이징하기</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chapter14/">배포 성공! 다음 단계 안내</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">AI Studio와 Firebase로 만드는 나의 첫 웹앱 - 방과후학교 신청 앱</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Part 1 - [1권] Part 1: 출발 준비 - 개발 환경 세팅하기</li>
+      <li class="breadcrumb-item active">Node.js 설치하기</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="nodejs">Node.js 설치하기<a class="headerlink" href="#nodejs" title="Permanent link">&para;</a></h1>
+<h2 id="_1">🎯 이 장에서 배우는 것<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Node.js가 왜 필요한지 설명할 수 있다</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Node.js LTS 버전을 설치할 수 있다</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <code>node -v</code> 명령어로 설치를 확인할 수 있다</li>
+</ul>
+<hr />
+<h2 id="_2">📚 핵심 개념<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h3 id="nodejs_1">개념: Node.js<a class="headerlink" href="#nodejs_1" title="Permanent link">&para;</a></h3>
+<p><strong>비유부터 시작할게요!</strong> 🔌</p>
+<p>여러분이 만들 웹앱은 <strong>전자제품</strong>이라고 생각해보세요. 전자제품을 돌리려면 <strong>발전기(전기)</strong>가 필요하죠? Node.js는 바로 그 <strong>발전기</strong> 역할이에요.</p>
+<p><strong>정확한 정의:</strong> Node.js는 JavaScript를 컴퓨터에서 실행할 수 있게 해주는 프로그램입니다.</p>
+<p><strong>왜 필요할까요?</strong> 다음 장에서 설치할 Firebase 도구가 Node.js 위에서 작동해요. Node.js 없이는 Firebase 도구를 쓸 수 없습니다.</p>
+<div class="mermaid">flowchart LR
+    A["Node.js 🔌\n(발전기)"] --&gt; B["Firebase 도구 ⚙️"]
+    B --&gt; C["우리의 웹앱 🚀"]</div>
+<blockquote>
+<p>💡 <strong>LTS란?</strong> Long Term Support의 약자로, "오래 안정적으로 지원하는 버전"이라는 뜻이에요. 항상 LTS를 선택하세요!</p>
+</blockquote>
+<hr />
+<h2 id="_3">🔨 따라하기<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h3 id="step-1-nodejs">Step 1: Node.js 다운로드 &amp; 설치<a class="headerlink" href="#step-1-nodejs" title="Permanent link">&para;</a></h3>
+<ol>
+<li>브라우저에서 <strong><a href="https://nodejs.org">https://nodejs.org</a></strong> 에 접속합니다</li>
+<li>화면에 큰 초록색 버튼 두 개가 보여요 → <strong>왼쪽 LTS 버전</strong>을 클릭합니다</li>
+<li>다운로드된 설치 파일을 실행합니다</li>
+<li>설치 화면에서 <strong>모두 "Next"만 누르면</strong> 됩니다 → 마지막에 "Finish" 클릭!</li>
+</ol>
+<blockquote>
+<p>🍎 <strong>Mac 사용자:</strong> <code>.pkg</code> 파일이 다운로드되고, "계속"만 누르면 됩니다.</p>
+</blockquote>
+<h3 id="step-2">Step 2: 설치 확인하기<a class="headerlink" href="#step-2" title="Permanent link">&para;</a></h3>
+<p><strong>Windows:</strong> 키보드에서 <code>Windows키 + R</code> → <code>cmd</code> 입력 → 확인</p>
+<p><strong>Mac:</strong> <code>Command + Space</code> → <code>터미널</code> 검색 → 실행</p>
+<p>열린 화면에 아래 명령어를 입력하고 Enter!</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>node<span class="w"> </span>-v
+</span></code></pre></div>
+<p><strong>실행 결과:</strong>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>v22.15.0
+</span></code></pre></div></p>
+<p>버전 번호가 뜨면 <strong>설치 성공</strong>입니다! 🎉 (숫자는 다를 수 있어요)</p>
+<hr />
+<h2 id="_4">⚠️ 주의할 점<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong><code>'node'은(는) 인식할 수 없는 명령입니다</code></strong> 라고 뜨나요? → 명령 프롬프트(터미널)를 <strong>완전히 닫고 새로 열어보세요.</strong> 설치 직후에는 이전 창이 Node.js를 인식하지 못할 수 있어요.</li>
+<li>그래도 안 되면 <strong>컴퓨터를 재부팅</strong> 후 다시 시도해보세요.</li>
+</ol>
+<hr />
+<h2 id="_5">✅ 점검하기<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<p><strong>1. Node.js는 이 프로젝트에서 어떤 역할을 하나요?</strong></p>
+<details><summary>정답 확인</summary>Firebase 도구를 실행하기 위한 기반(발전기) 역할을 합니다.</details>
+
+<p><strong>2. Node.js 설치 시 어떤 버전을 선택해야 하나요?</strong></p>
+<details><summary>정답 확인</summary>LTS(Long Term Support) 버전을 선택합니다.</details>
+
+<p><strong>3. 설치 확인 명령어는 무엇인가요?</strong></p>
+<details><summary>정답 확인</summary>node -v</details>
+
+<hr />
+<h2 id="_6">🔗 다음 장 미리보기<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<p>발전기(Node.js)가 준비되었으니, 다음 장에서는 이 위에 <strong>Firebase 도구</strong>를 설치합니다. 드디어 우리 프로젝트의 핵심 도구를 갖추게 돼요! 🔧</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../chapter01/" class="btn btn-neutral float-left" title="우리가 만들 앱 미리보기"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../chapter03/" class="btn btn-neutral float-right" title="Firebase 프로젝트 만들기">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../chapter01/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../chapter03/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="https://unpkg.com/mermaid@10/dist/mermaid.min.js"></script>
+      <script src="../javascripts/title-link.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

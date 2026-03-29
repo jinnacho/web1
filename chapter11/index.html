@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Created with EduFlow" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>CSV 다운로드 기능 추가하기 - AI Studio와 Firebase로 만드는 나의 첫 웹앱 - 방과후학교 신청 앱</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../stylesheets/custom.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "CSV \ub2e4\uc6b4\ub85c\ub4dc \uae30\ub2a5 \ucd94\uac00\ud558\uae30";
+        var mkdocs_page_input_path = "chapter11.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> AI Studio와 Firebase로 만드는 나의 첫 웹앱 - 방과후학교 신청 앱
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part 1 - [1권] Part 1: 출발 준비 - 개발 환경 세팅하기</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../chapter01/">우리가 만들 앱 미리보기</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chapter02/">Node.js 설치하기</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chapter03/">Firebase 프로젝트 만들기</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chapter04/">Firebase CLI 설치하고 로그인하기</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part 2 - [1권] Part 2: AI로 앱 만들기 - 학생용 신청 화면 완성</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../chapter05/">AI Studio Build로 학생용 앱 코드 생성하기</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chapter06/">Firebase Realtime Database 설정하기</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chapter07/">앱과 Firebase 연동하기</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chapter08/">Firebase Hosting으로 앱 배포하기</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part 3 - [2권] Part 3: 기능 확장 - 교사용 관리 화면 추가</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../chapter09/">교사용 관리 페이지 코드 생성하기</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chapter10/">신청 데이터 수정·삭제 기능 구현하기</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">CSV 다운로드 기능 추가하기</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#_1">🎯 이 장에서 배우는 것</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_2">📚 핵심 개념</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#csv-comma-separated-values">개념: CSV (Comma-Separated Values)</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_3">🔨 따라하기</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#step-1-ai-csv">Step 1: AI에게 CSV 다운로드 기능 요청하기</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#step-2-adminhtml">Step 2: 생성된 코드를 admin.html에 적용하기</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#step-3">Step 3: 다운로드 테스트하기</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_4">📝 전체 코드</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_5">⚠️ 주의할 점</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_6">✅ 점검하기</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_7">🔗 다음 장 미리보기</a>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part 4 - [2권] Part 4: 완성과 확장 - 나만의 앱으로 만들기</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../chapter12/">최종 테스트하고 재배포하기</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chapter13/">나만의 앱으로 커스터마이징하기</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chapter14/">배포 성공! 다음 단계 안내</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">AI Studio와 Firebase로 만드는 나의 첫 웹앱 - 방과후학교 신청 앱</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Part 3 - [2권] Part 3: 기능 확장 - 교사용 관리 화면 추가</li>
+      <li class="breadcrumb-item active">CSV 다운로드 기능 추가하기</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="chapter-11-csv">Chapter 11: CSV 다운로드 기능 추가하기<a class="headerlink" href="#chapter-11-csv" title="Permanent link">&para;</a></h1>
+<h2 id="_1">🎯 이 장에서 배우는 것<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> CSV 파일이 무엇이고 어떤 상황에서 유용한지 설명할 수 있다</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 교사용 화면에 CSV 다운로드 버튼을 추가하고 동작을 확인할 수 있다</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 다운로드된 CSV 파일을 엑셀에서 열어 데이터를 확인할 수 있다</li>
+</ul>
+<hr />
+<h2 id="_2">📚 핵심 개념<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h3 id="csv-comma-separated-values">개념: CSV (Comma-Separated Values)<a class="headerlink" href="#csv-comma-separated-values" title="Permanent link">&para;</a></h3>
+<p><strong>비유로 시작</strong> 📋</p>
+<p>CSV는 마치 <strong>줄노트에 쉼표로 칸을 나눠 쓴 명단</strong>과 같아요. 첫 줄에 "학번, 이름, 과목"이라고 제목을 쓰고, 그 아래로 한 줄에 한 명씩 "20301, 김민수, 수학"처럼 적는 거예요.</p>
+<p><strong>정확한 정의</strong></p>
+<p>CSV는 데이터를 <strong>쉼표(,)로 구분</strong>하여 저장하는 텍스트 파일 형식입니다. 확장자는 <code>.csv</code>이고, 엑셀이나 구글 스프레드시트에서 바로 열 수 있습니다.</p>
+<p><strong>예시로 확인</strong></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>학번,이름,선택과목
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>20301,김민수,수학
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>20302,이서연,영어
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>20303,박지호,과학
+</span></code></pre></div>
+<p>이 텍스트 파일을 엑셀에서 열면 자동으로 표가 됩니다. 교사가 신청 명단을 <strong>인쇄하거나 정리</strong>할 때 아주 유용하죠!</p>
+<hr />
+<h2 id="_3">🔨 따라하기<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h3 id="step-1-ai-csv">Step 1: AI에게 CSV 다운로드 기능 요청하기<a class="headerlink" href="#step-1-ai-csv" title="Permanent link">&para;</a></h3>
+<p>Firebase AI Studio(또는 사용 중인 AI 도구)에 다음과 같은 프롬프트를 입력하세요.</p>
+<blockquote>
+<p><strong>프롬프트 예시:</strong>
+"admin.html에 CSV 다운로드 버튼을 추가해줘. 버튼을 누르면 Firestore의 신청 데이터(학번, 이름, 선택과목)를 CSV 파일로 다운로드하는 JavaScript 함수를 만들어줘. 한글이 깨지지 않도록 UTF-8 BOM을 포함해줘."</p>
+</blockquote>
+<p>💡 <strong>포인트</strong>: "UTF-8 BOM 포함"이라고 꼭 언급하세요. 이걸 빠뜨리면 엑셀에서 한글이 깨집니다!</p>
+<h3 id="step-2-adminhtml">Step 2: 생성된 코드를 admin.html에 적용하기<a class="headerlink" href="#step-2-adminhtml" title="Permanent link">&para;</a></h3>
+<p>AI가 생성해주는 코드의 핵심 구조는 아래와 같습니다. 기존 <code>admin.html</code>에 <strong>다운로드 버튼</strong>과 <strong>JavaScript 함수</strong>를 추가하세요.</p>
+<p><strong>버튼 추가</strong> (HTML 부분):</p>
+<div class="language-html highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="cm">&lt;!-- 기존 신청 목록 위나 아래에 추가 --&gt;</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="p">&lt;</span><span class="nt">button</span> <span class="na">onclick</span><span class="o">=</span><span class="s">&quot;downloadCSV()&quot;</span><span class="p">&gt;</span>📥 CSV 다운로드<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+</span></code></pre></div>
+<p><strong>다운로드 함수</strong> (JavaScript 부분):</p>
+<div class="language-javascript highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kd">function</span><span class="w"> </span><span class="nx">downloadCSV</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span><span class="c1">// 1. Firestore에서 이미 불러온 신청 데이터 활용</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">rows</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;\uFEFF학번,이름,선택과목&#39;</span><span class="p">];</span><span class="w"> </span><span class="c1">// UTF-8 BOM + 헤더</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">  </span><span class="c1">// applications는 이미 화면에 표시 중인 신청 데이터 배열</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">  </span><span class="nx">applications</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">app</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">    </span><span class="nx">rows</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="sb">`</span><span class="si">${</span><span class="nx">app</span><span class="p">.</span><span class="nx">studentId</span><span class="si">}</span><span class="sb">,</span><span class="si">${</span><span class="nx">app</span><span class="p">.</span><span class="nx">name</span><span class="si">}</span><span class="sb">,</span><span class="si">${</span><span class="nx">app</span><span class="p">.</span><span class="nx">subject</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">  </span><span class="p">});</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">  </span><span class="c1">// 2. CSV 텍스트를 파일로 변환</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">csvContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">rows</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="s1">&#39;\n&#39;</span><span class="p">);</span>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">blob</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Blob</span><span class="p">([</span><span class="nx">csvContent</span><span class="p">],</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;text/csv;charset=utf-8;&#39;</span><span class="w"> </span><span class="p">});</span>
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="w">  </span><span class="c1">// 3. 다운로드 링크 생성 후 자동 클릭</span>
+</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">link</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">);</span>
+</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="w">  </span><span class="nx">link</span><span class="p">.</span><span class="nx">href</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">URL</span><span class="p">.</span><span class="nx">createObjectURL</span><span class="p">(</span><span class="nx">blob</span><span class="p">);</span>
+</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="w">  </span><span class="nx">link</span><span class="p">.</span><span class="nx">download</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;신청명단.csv&#39;</span><span class="p">;</span>
+</span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="w">  </span><span class="nx">link</span><span class="p">.</span><span class="nx">click</span><span class="p">();</span>
+</span><span id="__span-2-19"><a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="p">}</span>
+</span></code></pre></div>
+<blockquote>
+<p>⚡ <code>\uFEFF</code>가 바로 <strong>UTF-8 BOM</strong>입니다. 이 보이지 않는 문자 덕분에 엑셀이 "아, 이건 UTF-8이구나!" 하고 한글을 올바르게 표시합니다.</p>
+</blockquote>
+<h3 id="step-3">Step 3: 다운로드 테스트하기<a class="headerlink" href="#step-3" title="Permanent link">&para;</a></h3>
+<ol>
+<li><code>admin.html</code>을 브라우저에서 열고 <strong>신청 목록이 표시</strong>되는지 확인</li>
+<li><strong>📥 CSV 다운로드</strong> 버튼 클릭</li>
+<li><code>신청명단.csv</code> 파일이 다운로드되면 <strong>엑셀에서 열기</strong></li>
+</ol>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>✅ 기대 결과: 엑셀에 학번, 이름, 선택과목이 깔끔한 표로 표시됨
+</span></code></pre></div>
+<hr />
+<h2 id="_4">📝 전체 코드<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<div class="language-html highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="cm">&lt;!-- admin.html에 추가할 부분 --&gt;</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="cm">&lt;!-- 버튼 (신청 목록 영역 근처에 배치) --&gt;</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="p">&lt;</span><span class="nt">button</span> <span class="na">onclick</span><span class="o">=</span><span class="s">&quot;downloadCSV()&quot;</span><span class="p">&gt;</span>📥 CSV 다운로드<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="c1">// applications: Firestore에서 불러온 신청 데이터 배열</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="c1">// (기존 코드에서 이미 선언되어 있다고 가정)</span>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="kd">function</span><span class="w"> </span><span class="nx">downloadCSV</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">applications</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nx">applications</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="w">    </span><span class="nx">alert</span><span class="p">(</span><span class="s1">&#39;다운로드할 데이터가 없습니다.&#39;</span><span class="p">);</span>
+</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="w">    </span><span class="k">return</span><span class="p">;</span>
+</span><span id="__span-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-4-15"><a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a>
+</span><span id="__span-4-16"><a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="w">  </span><span class="c1">// 헤더 + BOM</span>
+</span><span id="__span-4-17"><a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">rows</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;\uFEFF학번,이름,선택과목&#39;</span><span class="p">];</span>
+</span><span id="__span-4-18"><a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a>
+</span><span id="__span-4-19"><a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="w">  </span><span class="c1">// 데이터 행 추가</span>
+</span><span id="__span-4-20"><a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a><span class="w">  </span><span class="nx">applications</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">app</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-21"><a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a><span class="w">    </span><span class="nx">rows</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="sb">`</span><span class="si">${</span><span class="nx">app</span><span class="p">.</span><span class="nx">studentId</span><span class="si">}</span><span class="sb">,</span><span class="si">${</span><span class="nx">app</span><span class="p">.</span><span class="nx">name</span><span class="si">}</span><span class="sb">,</span><span class="si">${</span><span class="nx">app</span><span class="p">.</span><span class="nx">subject</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+</span><span id="__span-4-22"><a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a><span class="w">  </span><span class="p">});</span>
+</span><span id="__span-4-23"><a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a>
+</span><span id="__span-4-24"><a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a><span class="w">  </span><span class="c1">// Blob 생성 및 다운로드</span>
+</span><span id="__span-4-25"><a id="__codelineno-4-25" name="__codelineno-4-25" href="#__codelineno-4-25"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">csvContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">rows</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="s1">&#39;\n&#39;</span><span class="p">);</span>
+</span><span id="__span-4-26"><a id="__codelineno-4-26" name="__codelineno-4-26" href="#__codelineno-4-26"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">blob</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Blob</span><span class="p">([</span><span class="nx">csvContent</span><span class="p">],</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;text/csv;charset=utf-8;&#39;</span><span class="w"> </span><span class="p">});</span>
+</span><span id="__span-4-27"><a id="__codelineno-4-27" name="__codelineno-4-27" href="#__codelineno-4-27"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">link</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">);</span>
+</span><span id="__span-4-28"><a id="__codelineno-4-28" name="__codelineno-4-28" href="#__codelineno-4-28"></a><span class="w">  </span><span class="nx">link</span><span class="p">.</span><span class="nx">href</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">URL</span><span class="p">.</span><span class="nx">createObjectURL</span><span class="p">(</span><span class="nx">blob</span><span class="p">);</span>
+</span><span id="__span-4-29"><a id="__codelineno-4-29" name="__codelineno-4-29" href="#__codelineno-4-29"></a><span class="w">  </span><span class="nx">link</span><span class="p">.</span><span class="nx">download</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;신청명단.csv&#39;</span><span class="p">;</span>
+</span><span id="__span-4-30"><a id="__codelineno-4-30" name="__codelineno-4-30" href="#__codelineno-4-30"></a><span class="w">  </span><span class="nx">link</span><span class="p">.</span><span class="nx">click</span><span class="p">();</span>
+</span><span id="__span-4-31"><a id="__codelineno-4-31" name="__codelineno-4-31" href="#__codelineno-4-31"></a><span class="p">}</span>
+</span><span id="__span-4-32"><a id="__codelineno-4-32" name="__codelineno-4-32" href="#__codelineno-4-32"></a><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span></code></pre></div>
+<hr />
+<h2 id="_5">⚠️ 주의할 점<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<ol>
+<li>
+<p><strong>한글 깨짐 방지</strong>: <code>\uFEFF</code>(UTF-8 BOM)를 CSV 맨 앞에 반드시 넣으세요. 빠뜨리면 엑셀에서 한글이 <code>ê¹€ë¯¼ì???</code> 처럼 깨져 보입니다.</p>
+</li>
+<li>
+<p><strong>데이터에 쉼표가 포함된 경우</strong>: 만약 데이터 값 안에 쉼표가 있으면(예: "수학, 영어") 칸이 잘못 나뉩니다. 이런 경우 값을 큰따옴표로 감싸야 합니다. 현재 학번·이름·과목명에는 쉼표가 없으므로 괜찮지만, 나중에 데이터가 복잡해지면 기억해두세요!</p>
+</li>
+</ol>
+<hr />
+<h2 id="_6">✅ 점검하기<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<p><strong>1. CSV 파일에서 쉼표의 역할은 무엇인가요?</strong></p>
+<details><summary>정답 확인</summary>
+쉼표는 각 데이터 항목(열)을 구분하는 역할을 합니다. 엑셀에서 열면 쉼표를 기준으로 각각 다른 셀에 데이터가 배치됩니다.
+</details>
+
+<p><strong>2. <code>\uFEFF</code>를 넣지 않으면 어떤 문제가 생기나요?</strong></p>
+<details><summary>정답 확인</summary>
+엑셀에서 CSV 파일을 열 때 한글이 깨져서 알아볼 수 없는 문자로 표시됩니다. \uFEFF(UTF-8 BOM)는 엑셀에게 "이 파일은 UTF-8 인코딩이야"라고 알려주는 신호입니다.
+</details>
+
+<p><strong>3. 다운로드 버튼을 눌렀는데 "다운로드할 데이터가 없습니다"라고 뜨면 어떻게 해야 하나요?</strong></p>
+<details><summary>정답 확인</summary>
+Firestore에서 신청 데이터를 먼저 불러와야 합니다. 신청 목록이 화면에 표시된 상태에서 다운로드 버튼을 눌러야 정상 동작합니다.
+</details>
+
+<hr />
+<h2 id="_7">🔗 다음 장 미리보기<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<p>다음 장에서는 <strong>배포와 공유</strong>를 다룹니다. 지금까지 만든 수강 신청 시스템을 실제 URL로 배포하여 다른 사람들이 접속할 수 있게 만들어 볼 거예요. 드디어 내가 만든 웹앱이 세상에 나가는 순간입니다! 🚀</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../chapter10/" class="btn btn-neutral float-left" title="신청 데이터 수정·삭제 기능 구현하기"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../chapter12/" class="btn btn-neutral float-right" title="최종 테스트하고 재배포하기">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../chapter10/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../chapter12/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="https://unpkg.com/mermaid@10/dist/mermaid.min.js"></script>
+      <script src="../javascripts/title-link.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

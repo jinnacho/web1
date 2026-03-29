@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Created with EduFlow" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>최종 테스트하고 재배포하기 - AI Studio와 Firebase로 만드는 나의 첫 웹앱 - 방과후학교 신청 앱</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../stylesheets/custom.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "\ucd5c\uc885 \ud14c\uc2a4\ud2b8\ud558\uace0 \uc7ac\ubc30\ud3ec\ud558\uae30";
+        var mkdocs_page_input_path = "chapter12.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> AI Studio와 Firebase로 만드는 나의 첫 웹앱 - 방과후학교 신청 앱
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part 1 - [1권] Part 1: 출발 준비 - 개발 환경 세팅하기</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../chapter01/">우리가 만들 앱 미리보기</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chapter02/">Node.js 설치하기</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chapter03/">Firebase 프로젝트 만들기</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chapter04/">Firebase CLI 설치하고 로그인하기</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part 2 - [1권] Part 2: AI로 앱 만들기 - 학생용 신청 화면 완성</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../chapter05/">AI Studio Build로 학생용 앱 코드 생성하기</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chapter06/">Firebase Realtime Database 설정하기</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chapter07/">앱과 Firebase 연동하기</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chapter08/">Firebase Hosting으로 앱 배포하기</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part 3 - [2권] Part 3: 기능 확장 - 교사용 관리 화면 추가</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../chapter09/">교사용 관리 페이지 코드 생성하기</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chapter10/">신청 데이터 수정·삭제 기능 구현하기</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chapter11/">CSV 다운로드 기능 추가하기</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part 4 - [2권] Part 4: 완성과 확장 - 나만의 앱으로 만들기</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">최종 테스트하고 재배포하기</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#_1">🎯 이 장에서 배우는 것</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_2">📚 핵심 개념</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#_3">개념: 시나리오 테스트</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_4">🔨 따라하기</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#step-1">Step 1: 시나리오대로 전체 테스트하기</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#step-2-ai">Step 2: 문제 발견 시 AI로 디버깅하기</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#step-3">Step 3: 재배포하기</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_5">⚠️ 주의할 점</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_6">✅ 점검하기</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_7">🔗 다음 장 미리보기</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chapter13/">나만의 앱으로 커스터마이징하기</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chapter14/">배포 성공! 다음 단계 안내</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">AI Studio와 Firebase로 만드는 나의 첫 웹앱 - 방과후학교 신청 앱</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Part 4 - [2권] Part 4: 완성과 확장 - 나만의 앱으로 만들기</li>
+      <li class="breadcrumb-item active">최종 테스트하고 재배포하기</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="chapter-12">Chapter 12: 최종 테스트하고 재배포하기<a class="headerlink" href="#chapter-12" title="Permanent link">&para;</a></h1>
+<h2 id="_1">🎯 이 장에서 배우는 것<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 학생용 신청과 교사용 관리 기능을 시나리오별로 전체 테스트할 수 있다</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 발견된 문제를 AI Studio Build에 설명하여 수정할 수 있다</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 수정된 앱을 <code>firebase deploy</code>로 재배포할 수 있다</li>
+</ul>
+<hr />
+<h2 id="_2">📚 핵심 개념<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h3 id="_3">개념: 시나리오 테스트<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>"시나리오 테스트는 마치 <strong>연극 리허설</strong>과 같아요. 본 공연(실제 사용) 전에 처음부터 끝까지 대본대로 해보면서 문제가 없는지 확인하는 거예요."</p>
+</blockquote>
+<p><strong>정확한 정의</strong>: 사용자가 실제로 앱을 쓰는 순서대로 기능을 하나씩 실행하며, 오류 없이 동작하는지 점검하는 과정입니다.</p>
+<p><strong>왜 중요할까요?</strong> 개별 기능은 잘 되더라도 <strong>전체 흐름으로 연결</strong>했을 때 문제가 생길 수 있습니다. 예를 들어 신청은 되는데 명단에 안 뜨거나, 삭제 후 화면이 안 바뀌거나 하는 경우죠.</p>
+<hr />
+<h2 id="_4">🔨 따라하기<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<h3 id="step-1">Step 1: 시나리오대로 전체 테스트하기<a class="headerlink" href="#step-1" title="Permanent link">&para;</a></h3>
+<p>로컬 서버(<code>firebase emulators:start</code> 또는 <code>npm run dev</code>)를 실행한 뒤, 아래 순서대로 직접 해보세요.</p>
+<p><strong>🧑‍🎓 학생 역할 테스트</strong>
+1. 학생 신청 페이지에서 이름·학번 등 입력 후 <strong>신청 버튼</strong> 클릭
+2. 신청 완료 메시지가 정상적으로 표시되는지 확인
+3. 같은 정보로 <strong>중복 신청</strong>을 시도해보기 (막혀야 정상!)</p>
+<p><strong>🧑‍🏫 교사 역할 테스트</strong>
+1. 교사 관리 페이지에서 <strong>명단 조회</strong> → 방금 신청한 학생이 보이는지 확인
+2. 해당 학생 정보를 <strong>수정</strong>하고 저장 → 변경 내용이 반영되는지 확인
+3. <strong>CSV 다운로드</strong> → 파일이 정상적으로 받아지는지 확인
+4. 학생 한 명을 <strong>삭제</strong> → 목록에서 사라지는지 확인</p>
+<blockquote>
+<p>💡 <strong>팁</strong>: 테스트할 때 <strong>메모장이나 체크리스트</strong>를 옆에 두고 결과를 적으면 놓치는 게 없어요!</p>
+</blockquote>
+<hr />
+<h3 id="step-2-ai">Step 2: 문제 발견 시 AI로 디버깅하기<a class="headerlink" href="#step-2-ai" title="Permanent link">&para;</a></h3>
+<p>테스트 중 오류를 발견했다면, <strong>AI Studio Build</strong>에 상황을 설명하세요.</p>
+<p><strong>좋은 프롬프트 예시</strong>:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>CSV 다운로드 버튼을 클릭하면 파일은 받아지는데,
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>한글 이름이 깨져서 나옵니다.
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>현재 다운로드 함수는 아래와 같습니다:
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>[해당 코드 붙여넣기]
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>한글이 정상 출력되도록 수정해주세요.
+</span></code></pre></div>
+<p><strong>핵심 포인트 3가지</strong>:
+- <strong>뭘 했는지</strong> (어떤 버튼을 클릭)
+- <strong>뭐가 잘못됐는지</strong> (한글 깨짐)
+- <strong>현재 코드</strong> (관련 부분 복사)</p>
+<p>AI가 수정 코드를 주면, 해당 부분만 교체하고 다시 테스트합니다. ✅ 통과하면 다음 단계로!</p>
+<hr />
+<h3 id="step-3">Step 3: 재배포하기<a class="headerlink" href="#step-3" title="Permanent link">&para;</a></h3>
+<p>모든 테스트를 통과했으면 최종 배포합니다.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>firebase<span class="w"> </span>deploy
+</span></code></pre></div>
+<p><strong>실행 결과</strong>:
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>✔ Deploy complete!
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>Hosting URL: https://your-project.web.app
+</span></code></pre></div></p>
+<p>표시된 URL에 접속해서 <strong>Step 1의 시나리오를 한 번 더</strong> 간단히 확인하세요. 로컬에서는 됐는데 배포 후 안 되는 경우가 가끔 있거든요! 🔍</p>
+<hr />
+<h2 id="_5">⚠️ 주의할 점<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>배포 전 반드시 빌드 확인</strong>: 프레임워크를 사용 중이라면 <code>npm run build</code>가 에러 없이 완료된 후 <code>firebase deploy</code>를 실행하세요.</li>
+<li><strong>브라우저 캐시 주의</strong>: 재배포 후 변경이 안 보이면 <code>Ctrl + Shift + R</code>(강력 새로고침)을 눌러보세요.</li>
+</ol>
+<hr />
+<h2 id="_6">✅ 점검하기<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<p><strong>1. 시나리오 테스트에서 가장 중요한 것은?</strong></p>
+<details><summary>정답 확인</summary>개별 기능이 아니라, 사용자가 실제로 쓰는 순서(전체 흐름)대로 테스트하는 것입니다.</details>
+
+<p><strong>2. AI에게 오류 수정을 요청할 때 꼭 포함해야 할 3가지는?</strong></p>
+<details><summary>정답 확인</summary>① 뭘 했는지(조작 과정) ② 뭐가 잘못됐는지(증상) ③ 현재 코드(관련 부분)입니다.</details>
+
+<p><strong>3. 재배포 후 화면이 안 바뀌면 어떻게 해야 하나요?</strong></p>
+<details><summary>정답 확인</summary>Ctrl + Shift + R로 브라우저 강력 새로고침을 합니다. 캐시된 이전 버전이 보이고 있을 수 있습니다.</details>
+
+<hr />
+<h2 id="_7">🔗 다음 장 미리보기<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<p>앱이 완성되고 배포까지 끝났어요! 🎉 다음 장에서는 <strong>완성된 앱을 공유하고 포트폴리오로 정리</strong>하는 방법을 알아봅니다. 내가 만든 앱을 다른 사람에게 자신 있게 보여줄 준비를 해볼까요?</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../chapter11/" class="btn btn-neutral float-left" title="CSV 다운로드 기능 추가하기"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../chapter13/" class="btn btn-neutral float-right" title="나만의 앱으로 커스터마이징하기">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../chapter11/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../chapter13/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="https://unpkg.com/mermaid@10/dist/mermaid.min.js"></script>
+      <script src="../javascripts/title-link.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

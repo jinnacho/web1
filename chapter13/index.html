@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Created with EduFlow" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>나만의 앱으로 커스터마이징하기 - AI Studio와 Firebase로 만드는 나의 첫 웹앱 - 방과후학교 신청 앱</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../stylesheets/custom.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "\ub098\ub9cc\uc758 \uc571\uc73c\ub85c \ucee4\uc2a4\ud130\ub9c8\uc774\uc9d5\ud558\uae30";
+        var mkdocs_page_input_path = "chapter13.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> AI Studio와 Firebase로 만드는 나의 첫 웹앱 - 방과후학교 신청 앱
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part 1 - [1권] Part 1: 출발 준비 - 개발 환경 세팅하기</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../chapter01/">우리가 만들 앱 미리보기</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chapter02/">Node.js 설치하기</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chapter03/">Firebase 프로젝트 만들기</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chapter04/">Firebase CLI 설치하고 로그인하기</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part 2 - [1권] Part 2: AI로 앱 만들기 - 학생용 신청 화면 완성</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../chapter05/">AI Studio Build로 학생용 앱 코드 생성하기</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chapter06/">Firebase Realtime Database 설정하기</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chapter07/">앱과 Firebase 연동하기</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chapter08/">Firebase Hosting으로 앱 배포하기</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part 3 - [2권] Part 3: 기능 확장 - 교사용 관리 화면 추가</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../chapter09/">교사용 관리 페이지 코드 생성하기</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chapter10/">신청 데이터 수정·삭제 기능 구현하기</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chapter11/">CSV 다운로드 기능 추가하기</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part 4 - [2권] Part 4: 완성과 확장 - 나만의 앱으로 만들기</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../chapter12/">최종 테스트하고 재배포하기</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">나만의 앱으로 커스터마이징하기</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#_2">🎯 이 장에서 배우는 것</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_3">📚 핵심 개념</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#_4">개념: 커스터마이징 포인트</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_5">🔨 따라하기</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#step-1">Step 1: 제목과 과목 목록 바꾸기</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#step-2-ai">Step 2: AI에게 새 기능 요청하기</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_6">📝 전체 코드</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_7">⚠️ 주의할 점</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_8">✅ 점검하기</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_9">🔗 다음 장 미리보기</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chapter14/">배포 성공! 다음 단계 안내</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">AI Studio와 Firebase로 만드는 나의 첫 웹앱 - 방과후학교 신청 앱</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Part 4 - [2권] Part 4: 완성과 확장 - 나만의 앱으로 만들기</li>
+      <li class="breadcrumb-item active">나만의 앱으로 커스터마이징하기</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="_1">나만의 앱으로 커스터마이징하기<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<h2 id="_2">🎯 이 장에서 배우는 것<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 앱 제목, 색상, 과목 목록 등을 자신의 취향에 맞게 수정할 수 있다</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> AI에게 새로운 기능 추가를 요청하는 방법을 알 수 있다</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 커스터마이징 후 재배포하여 변경 사항을 확인할 수 있다</li>
+</ul>
+<hr />
+<h2 id="_3">📚 핵심 개념<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h3 id="_4">개념: 커스터마이징 포인트<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p><strong>"커스터마이징은 마치 새 집에 입주한 뒤 벽지와 가구를 바꾸는 것과 같아요."</strong></p>
+<p>집의 구조(기둥, 배관)는 그대로 두고, 눈에 보이는 부분만 취향대로 바꾸면 완전히 다른 느낌의 공간이 되죠. 앱도 마찬가지입니다.</p>
+<p>우리가 바꿀 수 있는 <strong>커스터마이징 포인트</strong>는 크게 세 가지입니다.</p>
+<ul>
+<li><strong>텍스트</strong>: 앱 제목, 버튼 문구, 안내 메시지</li>
+<li><strong>스타일</strong>: 배경 색상, 글자 크기, 테마 컬러</li>
+<li><strong>데이터</strong>: 과목 목록, 선택지, 기본값</li>
+</ul>
+<p>이런 부분은 코드에서 <strong>따옴표 안의 문자열</strong>이나 <strong>색상 코드</strong>로 되어 있어서, 값만 바꾸면 앱 전체 분위기가 달라집니다! 🎨</p>
+<hr />
+<h2 id="_5">🔨 따라하기<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<h3 id="step-1">Step 1: 제목과 과목 목록 바꾸기<a class="headerlink" href="#step-1" title="Permanent link">&para;</a></h3>
+<p>AI Studio Build에서 코드를 열고, 아래와 같은 부분을 찾아 수정해보세요.</p>
+<p><strong>수정 전:</strong>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">st</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;📝 수강신청 앱&quot;</span><span class="p">)</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="n">subjects</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;국어&quot;</span><span class="p">,</span> <span class="s2">&quot;영어&quot;</span><span class="p">,</span> <span class="s2">&quot;수학&quot;</span><span class="p">,</span> <span class="s2">&quot;과학&quot;</span><span class="p">]</span>
+</span></code></pre></div></p>
+<p><strong>수정 후:</strong>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">st</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;🎵 동아리 신청 앱&quot;</span><span class="p">)</span>  <span class="c1"># 원하는 제목으로!</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">subjects</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;음악&quot;</span><span class="p">,</span> <span class="s2">&quot;미술&quot;</span><span class="p">,</span> <span class="s2">&quot;체육&quot;</span><span class="p">,</span> <span class="s2">&quot;연극&quot;</span><span class="p">]</span>  <span class="c1"># 원하는 항목으로!</span>
+</span></code></pre></div></p>
+<p><strong>포인트</strong>: 따옴표(<code>"..."</code>) 안의 글자만 바꾸면 됩니다. 따옴표 자체는 지우지 마세요!</p>
+<h3 id="step-2-ai">Step 2: AI에게 새 기능 요청하기<a class="headerlink" href="#step-2-ai" title="Permanent link">&para;</a></h3>
+<p>직접 코드를 수정하는 것 외에, AI에게 말로 요청할 수도 있습니다.</p>
+<p>AI Studio Build 채팅창에 이렇게 입력해보세요.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>&quot;신청 완료 시 축하 풍선 애니메이션을 추가해줘&quot;
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>&quot;배경색을 연한 파란색(#E8F4FD)으로 바꿔줘&quot;
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>&quot;신청자 이름을 입력받는 칸을 추가해줘&quot;
+</span></code></pre></div>
+<p>AI가 코드를 수정해주면, 미리보기에서 결과를 바로 확인할 수 있습니다. 마음에 들지 않으면 <strong>"되돌려줘"</strong>라고 하면 돼요. 부담 없이 실험해보세요! 🧪</p>
+<p>수정이 완료되면, 12장에서 배운 것처럼 <strong>Deploy</strong> 버튼을 눌러 재배포하세요. 몇 초 후 URL에 접속하면 변경 사항이 반영된 <strong>세상에 하나뿐인 나만의 앱</strong>을 만나볼 수 있습니다. 🎉</p>
+<hr />
+<h2 id="_6">📝 전체 코드<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">streamlit</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">st</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="c1"># 🎨 여기를 수정하세요! - 커스터마이징 포인트</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="n">app_title</span> <span class="o">=</span> <span class="s2">&quot;🎵 동아리 신청 앱&quot;</span>        <span class="c1"># 앱 제목</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="n">subjects</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;음악&quot;</span><span class="p">,</span> <span class="s2">&quot;미술&quot;</span><span class="p">,</span> <span class="s2">&quot;체육&quot;</span><span class="p">,</span> <span class="s2">&quot;연극&quot;</span><span class="p">]</span>  <span class="c1"># 선택 항목</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="n">theme_color</span> <span class="o">=</span> <span class="s2">&quot;#4CAF50&quot;</span>                <span class="c1"># 테마 색상</span>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="n">st</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">app_title</span><span class="p">)</span>
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="n">name</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">text_input</span><span class="p">(</span><span class="s2">&quot;이름을 입력하세요&quot;</span><span class="p">)</span>
+</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="n">choice</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">selectbox</span><span class="p">(</span><span class="s2">&quot;희망 동아리를 선택하세요&quot;</span><span class="p">,</span> <span class="n">subjects</span><span class="p">)</span>
+</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>
+</span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="k">if</span> <span class="n">st</span><span class="o">.</span><span class="n">button</span><span class="p">(</span><span class="s2">&quot;신청하기&quot;</span><span class="p">):</span>
+</span><span id="__span-5-14"><a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>    <span class="k">if</span> <span class="n">name</span><span class="p">:</span>
+</span><span id="__span-5-15"><a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a>        <span class="n">st</span><span class="o">.</span><span class="n">success</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;🎉 </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">님, </span><span class="si">{</span><span class="n">choice</span><span class="si">}</span><span class="s2"> 동아리 신청 완료!&quot;</span><span class="p">)</span>
+</span><span id="__span-5-16"><a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a>        <span class="n">st</span><span class="o">.</span><span class="n">balloons</span><span class="p">()</span>
+</span><span id="__span-5-17"><a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a>    <span class="k">else</span><span class="p">:</span>
+</span><span id="__span-5-18"><a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a>        <span class="n">st</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;이름을 먼저 입력해주세요.&quot;</span><span class="p">)</span>
+</span></code></pre></div>
+<hr />
+<h2 id="_7">⚠️ 주의할 점<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>따옴표 짝 맞추기</strong>: <code>"동아리 신청 앱"</code> 처럼 따옴표는 반드시 열고 닫아야 합니다. 하나만 지우면 에러가 나요.</li>
+<li><strong>쉼표 빠뜨리지 않기</strong>: 리스트 항목 사이에 쉼표(<code>,</code>)가 빠지면 오류가 발생합니다. <code>["음악", "미술"]</code> ← 이 쉼표요!</li>
+</ul>
+<hr />
+<h2 id="_8">✅ 점검하기<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<p><strong>1. 앱 제목을 "출석 체크"로 바꾸려면 코드 어디를 수정하면 될까요?</strong></p>
+<details><summary>정답 확인</summary>
+
+`app_title = "출석 체크"` — 따옴표 안의 문자열만 바꾸면 됩니다.
+</details>
+
+<p><strong>2. AI에게 기능 추가를 요청했는데 결과가 마음에 안 들면 어떻게 하나요?</strong></p>
+<details><summary>정답 확인</summary>
+
+채팅창에 "되돌려줘"라고 말하면 이전 상태로 복원할 수 있습니다. 실험은 언제든 되돌릴 수 있으니 자유롭게 시도하세요!
+</details>
+
+<p><strong>3. 수정한 내용을 다른 사람도 볼 수 있게 하려면 마지막에 무엇을 해야 하나요?</strong></p>
+<details><summary>정답 확인</summary>
+
+Deploy(재배포) 버튼을 눌러야 합니다. 재배포해야 URL에 변경 사항이 반영됩니다.
+</details>
+
+<hr />
+<h2 id="_9">🔗 다음 장 미리보기<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
+<p>다음 장은 대망의 마지막 차시! <strong>지금까지 배운 모든 것을 되돌아보고, 앞으로의 학습 방향</strong>을 정리합니다. 여러분이 만든 앱을 자랑하고, 다음 단계로 나아갈 로드맵을 함께 살펴볼 거예요. 🚀</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../chapter12/" class="btn btn-neutral float-left" title="최종 테스트하고 재배포하기"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../chapter14/" class="btn btn-neutral float-right" title="배포 성공! 다음 단계 안내">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../chapter12/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../chapter14/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="https://unpkg.com/mermaid@10/dist/mermaid.min.js"></script>
+      <script src="../javascripts/title-link.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

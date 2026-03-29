@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Created with EduFlow" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>신청 데이터 수정·삭제 기능 구현하기 - AI Studio와 Firebase로 만드는 나의 첫 웹앱 - 방과후학교 신청 앱</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../stylesheets/custom.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "\uc2e0\uccad \ub370\uc774\ud130 \uc218\uc815\u00b7\uc0ad\uc81c \uae30\ub2a5 \uad6c\ud604\ud558\uae30";
+        var mkdocs_page_input_path = "chapter10.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> AI Studio와 Firebase로 만드는 나의 첫 웹앱 - 방과후학교 신청 앱
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part 1 - [1권] Part 1: 출발 준비 - 개발 환경 세팅하기</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../chapter01/">우리가 만들 앱 미리보기</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chapter02/">Node.js 설치하기</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chapter03/">Firebase 프로젝트 만들기</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chapter04/">Firebase CLI 설치하고 로그인하기</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part 2 - [1권] Part 2: AI로 앱 만들기 - 학생용 신청 화면 완성</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../chapter05/">AI Studio Build로 학생용 앱 코드 생성하기</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chapter06/">Firebase Realtime Database 설정하기</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chapter07/">앱과 Firebase 연동하기</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chapter08/">Firebase Hosting으로 앱 배포하기</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part 3 - [2권] Part 3: 기능 확장 - 교사용 관리 화면 추가</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../chapter09/">교사용 관리 페이지 코드 생성하기</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">신청 데이터 수정·삭제 기능 구현하기</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#_2">🎯 이 장에서 배우는 것</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_3">📚 핵심 개념</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#update-delete">개념: 데이터 수정과 삭제 (Update &amp; Delete)</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_4">🔨 따라하기</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#step-1-ai">Step 1: AI에게 수정·삭제 기능 요청하기</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#step-2">Step 2: 핵심 코드 이해하기</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_5">📝 동작 흐름 정리</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_6">⚠️ 주의할 점</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_7">✅ 점검하기</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_8">🔗 다음 장 미리보기</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chapter11/">CSV 다운로드 기능 추가하기</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part 4 - [2권] Part 4: 완성과 확장 - 나만의 앱으로 만들기</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../chapter12/">최종 테스트하고 재배포하기</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chapter13/">나만의 앱으로 커스터마이징하기</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chapter14/">배포 성공! 다음 단계 안내</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">AI Studio와 Firebase로 만드는 나의 첫 웹앱 - 방과후학교 신청 앱</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Part 3 - [2권] Part 3: 기능 확장 - 교사용 관리 화면 추가</li>
+      <li class="breadcrumb-item active">신청 데이터 수정·삭제 기능 구현하기</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="_1">신청 데이터 수정·삭제 기능 구현하기<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<h2 id="_2">🎯 이 장에서 배우는 것<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 교사용 화면에서 학생의 신청 정보를 수정할 수 있다</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 교사용 화면에서 학생의 신청 정보를 삭제할 수 있다</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Firebase에서 데이터가 실시간 반영되는 것을 확인할 수 있다</li>
+</ul>
+<hr />
+<h2 id="_3">📚 핵심 개념<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h3 id="update-delete">개념: 데이터 수정과 삭제 (Update &amp; Delete)<a class="headerlink" href="#update-delete" title="Permanent link">&para;</a></h3>
+<p>지난 시간에 우리는 교사용 관리 화면에서 데이터를 <strong>읽어오는(Read)</strong> 기능을 만들었어요. 이번에는 <strong>수정(Update)</strong>과 <strong>삭제(Delete)</strong>를 추가합니다.</p>
+<blockquote>
+<p>🎯 <strong>비유</strong>: 출석부를 생각해 보세요. 학생 이름을 잘못 적었으면 <strong>지우고 다시 쓰고(수정)</strong>, 전학 간 학생은 <strong>줄 자체를 지우는(삭제)</strong> 것과 같아요.</p>
+</blockquote>
+<p>Firebase에서 사용하는 핵심 명령어는 딱 두 가지입니다.</p>
+<ul>
+<li><strong><code>update()</code></strong> — 특정 데이터의 값을 변경할 때</li>
+<li><strong><code>remove()</code></strong> — 특정 데이터를 완전히 삭제할 때</li>
+</ul>
+<p>두 명령 모두 데이터의 <strong>고유 경로(key)</strong>를 알아야 해요. 9장에서 데이터를 읽어올 때 각 신청 항목마다 고유 key가 있었던 것, 기억나시죠? 바로 그 key를 활용합니다.</p>
+<hr />
+<h2 id="_4">🔨 따라하기<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<h3 id="step-1-ai">Step 1: AI에게 수정·삭제 기능 요청하기<a class="headerlink" href="#step-1-ai" title="Permanent link">&para;</a></h3>
+<p>Google AI Studio의 <strong>Build with Gemini</strong> 채팅창에 아래 프롬프트를 입력하세요.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>기존 admin.html의 신청 목록 테이블에 다음 기능을 추가해줘.
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>1. 각 행에 &quot;수정&quot; 버튼과 &quot;삭제&quot; 버튼을 추가
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>2. &quot;수정&quot; 버튼 클릭 시:
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>   - 해당 행의 텍스트가 입력 필드로 바뀜
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>   - &quot;수정&quot; 버튼이 &quot;저장&quot; 버튼으로 변경
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>   - &quot;저장&quot; 클릭 시 Firebase Realtime Database의 해당 데이터를 update()로 수정
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>3. &quot;삭제&quot; 버튼 클릭 시:
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>   - &quot;정말 삭제하시겠습니까?&quot; 확인 대화상자 표시
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>   - 확인 시 Firebase Realtime Database에서 remove()로 삭제
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>4. 수정·삭제 후 목록이 실시간으로 자동 갱신되도록 해줘
+</span></code></pre></div>
+<p>AI가 생성한 코드를 확인하고, 기존 <code>admin.html</code>에 반영합니다.</p>
+<h3 id="step-2">Step 2: 핵심 코드 이해하기<a class="headerlink" href="#step-2" title="Permanent link">&para;</a></h3>
+<p>AI가 생성한 코드 중 <strong>수정</strong>과 <strong>삭제</strong>의 핵심 부분을 살펴볼게요.</p>
+<p><strong>삭제 기능 코드</strong>:</p>
+<div class="language-javascript highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1">// 삭제 버튼 클릭 시</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kd">function</span><span class="w"> </span><span class="nx">deleteEntry</span><span class="p">(</span><span class="nx">key</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">confirm</span><span class="p">(</span><span class="s2">&quot;정말 삭제하시겠습니까?&quot;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">entryRef</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ref</span><span class="p">(</span><span class="nx">database</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;applications/&#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">key</span><span class="p">);</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="nx">remove</span><span class="p">(</span><span class="nx">entryRef</span><span class="p">)</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">      </span><span class="p">.</span><span class="nx">then</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;삭제 완료!&quot;</span><span class="p">))</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">      </span><span class="p">.</span><span class="k">catch</span><span class="p">((</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">&quot;삭제 실패:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">error</span><span class="p">));</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="p">}</span>
+</span></code></pre></div>
+<p><strong>수정(저장) 기능 코드</strong>:</p>
+<div class="language-javascript highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1">// 저장 버튼 클릭 시</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="kd">function</span><span class="w"> </span><span class="nx">saveEntry</span><span class="p">(</span><span class="nx">key</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">newName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;edit-name-&#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">key</span><span class="p">).</span><span class="nx">value</span><span class="p">;</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">newClass</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;edit-class-&#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">key</span><span class="p">).</span><span class="nx">value</span><span class="p">;</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">entryRef</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ref</span><span class="p">(</span><span class="nx">database</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;applications/&#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">key</span><span class="p">);</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">  </span><span class="nx">update</span><span class="p">(</span><span class="nx">entryRef</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">    </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="nx">newName</span><span class="p">,</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">    </span><span class="nx">classNum</span><span class="o">:</span><span class="w"> </span><span class="nx">newClass</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">  </span><span class="p">})</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">    </span><span class="p">.</span><span class="nx">then</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;수정 완료!&quot;</span><span class="p">))</span>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">    </span><span class="p">.</span><span class="k">catch</span><span class="p">((</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">&quot;수정 실패:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">error</span><span class="p">));</span>
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="p">}</span>
+</span></code></pre></div>
+<blockquote>
+<p>💡 <strong>포인트</strong>: <code>'applications/' + key</code>가 바로 해당 학생 데이터의 <strong>고유 경로</strong>예요. 이 경로를 정확히 지정해야 원하는 데이터만 수정·삭제됩니다.</p>
+</blockquote>
+<p><strong>실행 결과</strong>:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>1. 삭제 버튼 클릭 → 확인 대화상자 → &quot;확인&quot; → 해당 행 즉시 사라짐
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>2. 수정 버튼 클릭 → 텍스트가 입력 필드로 변환 → 값 수정 후 저장 → 즉시 반영
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>3. Firebase 콘솔에서도 데이터가 실시간으로 변경/삭제된 것을 확인!
+</span></code></pre></div>
+<hr />
+<h2 id="_5">📝 동작 흐름 정리<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<div class="mermaid">flowchart LR
+    A[교사가 버튼 클릭] --&gt; B{어떤 버튼?}
+    B --&gt;|수정| C[입력 필드로 전환]
+    C --&gt; D[저장 클릭]
+    D --&gt; E["update() 실행"]
+    B --&gt;|삭제| F[확인 대화상자]
+    F --&gt;|확인| G["remove() 실행"]
+    E --&gt; H[Firebase 실시간 반영]
+    G --&gt; H
+    H --&gt; I[화면 자동 갱신]</div>
+<hr />
+<h2 id="_6">⚠️ 주의할 점<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>삭제는 되돌릴 수 없어요!</strong> <code>remove()</code>로 삭제한 데이터는 복구할 수 없으므로 반드시 <code>confirm()</code> 확인 대화상자를 넣으세요.</li>
+<li><strong>key 값을 정확히 전달해야 해요.</strong> key가 잘못되면 엉뚱한 데이터가 수정·삭제될 수 있습니다. 9장에서 목록을 그릴 때 각 항목의 key를 버튼에 연결하는 부분을 꼭 확인하세요.</li>
+</ul>
+<hr />
+<h2 id="_7">✅ 점검하기<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<p><strong>1. Firebase에서 특정 데이터를 삭제할 때 사용하는 함수는?</strong></p>
+<details><summary>정답 확인</summary>
+<code>remove()</code> 함수를 사용합니다. 삭제할 데이터의 경로(ref)를 지정하여 호출합니다.
+</details>
+
+<p><strong>2. 수정 기능에서 <code>update()</code>와 <code>set()</code>의 차이는 무엇일까요?</strong></p>
+<details><summary>정답 확인</summary>
+<code>update()</code>는 지정한 필드만 변경하고 나머지는 그대로 유지합니다. <code>set()</code>은 해당 경로의 데이터를 통째로 덮어쓰므로, 지정하지 않은 필드는 삭제될 수 있습니다. 부분 수정에는 <code>update()</code>가 안전합니다.
+</details>
+
+<p><strong>3. 삭제 버튼에 <code>confirm()</code> 대화상자를 넣는 이유는?</strong></p>
+<details><summary>정답 확인</summary>
+삭제된 데이터는 복구할 수 없기 때문에, 실수로 삭제하는 것을 방지하기 위해 사용자에게 한 번 더 확인을 받는 것입니다.
+</details>
+
+<hr />
+<h2 id="_8">🔗 다음 장 미리보기<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<p>다음 장에서는 <strong>교사용 화면에 통계·요약 기능</strong>을 추가합니다. 전체 신청 인원 수, 학급별 현황 등을 자동으로 계산해서 보여주는 대시보드를 만들어 볼 거예요! 📊</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../chapter09/" class="btn btn-neutral float-left" title="교사용 관리 페이지 코드 생성하기"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../chapter11/" class="btn btn-neutral float-right" title="CSV 다운로드 기능 추가하기">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../chapter09/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../chapter11/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="https://unpkg.com/mermaid@10/dist/mermaid.min.js"></script>
+      <script src="../javascripts/title-link.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

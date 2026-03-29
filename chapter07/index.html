@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Created with EduFlow" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>앱과 Firebase 연동하기 - AI Studio와 Firebase로 만드는 나의 첫 웹앱 - 방과후학교 신청 앱</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../stylesheets/custom.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "\uc571\uacfc Firebase \uc5f0\ub3d9\ud558\uae30";
+        var mkdocs_page_input_path = "chapter07.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> AI Studio와 Firebase로 만드는 나의 첫 웹앱 - 방과후학교 신청 앱
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part 1 - [1권] Part 1: 출발 준비 - 개발 환경 세팅하기</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../chapter01/">우리가 만들 앱 미리보기</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chapter02/">Node.js 설치하기</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chapter03/">Firebase 프로젝트 만들기</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chapter04/">Firebase CLI 설치하고 로그인하기</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part 2 - [1권] Part 2: AI로 앱 만들기 - 학생용 신청 화면 완성</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../chapter05/">AI Studio Build로 학생용 앱 코드 생성하기</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chapter06/">Firebase Realtime Database 설정하기</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">앱과 Firebase 연동하기</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#_1">🎯 이 장에서 배우는 것</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_2">📚 핵심 개념</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#firebase">개념: Firebase 연동</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_3">🔨 따라하기</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#step-1-firebaseconfig">Step 1: firebaseConfig 붙여넣기</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#step-2">Step 2: 브라우저에서 앱 실행하고 데이터 입력하기</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#step-3-firebase">Step 3: Firebase 콘솔에서 데이터 확인하기</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_4">⚠️ 주의할 점</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_5">✅ 점검하기</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_6">🔗 다음 장 미리보기</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chapter08/">Firebase Hosting으로 앱 배포하기</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part 3 - [2권] Part 3: 기능 확장 - 교사용 관리 화면 추가</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../chapter09/">교사용 관리 페이지 코드 생성하기</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chapter10/">신청 데이터 수정·삭제 기능 구현하기</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chapter11/">CSV 다운로드 기능 추가하기</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Part 4 - [2권] Part 4: 완성과 확장 - 나만의 앱으로 만들기</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../chapter12/">최종 테스트하고 재배포하기</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chapter13/">나만의 앱으로 커스터마이징하기</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../chapter14/">배포 성공! 다음 단계 안내</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">AI Studio와 Firebase로 만드는 나의 첫 웹앱 - 방과후학교 신청 앱</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Part 2 - [1권] Part 2: AI로 앱 만들기 - 학생용 신청 화면 완성</li>
+      <li class="breadcrumb-item active">앱과 Firebase 연동하기</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="chapter-7-firebase">Chapter 7: 앱과 Firebase 연동하기<a class="headerlink" href="#chapter-7-firebase" title="Permanent link">&para;</a></h1>
+<h2 id="_1">🎯 이 장에서 배우는 것<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> firebaseConfig 정보를 앱 코드에 정확히 삽입할 수 있다</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 신청 버튼을 눌러 Firebase에 데이터가 저장되는 흐름을 이해할 수 있다</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Firebase 콘솔에서 저장된 데이터를 실시간으로 확인할 수 있다</li>
+</ul>
+<hr />
+<h2 id="_2">📚 핵심 개념<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h3 id="firebase">개념: Firebase 연동<a class="headerlink" href="#firebase" title="Permanent link">&para;</a></h3>
+<p><strong>비유로 시작</strong> 🔌</p>
+<blockquote>
+<p>지금까지 우리는 "앱(전자제품)"과 "Firebase(콘센트)"를 각각 준비했어요. 이번 장에서는 <strong>플러그를 꽂는 작업</strong>을 합니다. 플러그(firebaseConfig)를 콘센트에 정확히 꽂아야 전기(데이터)가 흐르겠죠?</p>
+</blockquote>
+<p><strong>정확한 정의</strong></p>
+<p>Firebase 연동이란, Chapter 3에서 복사해둔 <strong>firebaseConfig 정보</strong>(프로젝트 고유 주소)를 앱 코드에 삽입하여 앱과 Firebase 서버가 서로 통신할 수 있게 만드는 과정입니다.</p>
+<p><strong>데이터 흐름 확인</strong></p>
+<div class="mermaid">flowchart LR
+    A["👩‍💻 학생이\n이름/학번 입력"] --&gt; B["📱 신청 버튼\n클릭"]
+    B --&gt; C["🔌 firebaseConfig로\nFirebase에 연결"]
+    C --&gt; D["☁️ Realtime Database에\n데이터 저장"]
+    D --&gt; E["✅ Firebase 콘솔에서\n확인"]</div>
+<p>버튼을 누르면 앱이 firebaseConfig 정보를 이용해 Firebase 서버를 찾아가고, 입력한 데이터를 저장합니다. 이 모든 과정이 <strong>1초도 안 되어</strong> 일어나요!</p>
+<hr />
+<h2 id="_3">🔨 따라하기<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h3 id="step-1-firebaseconfig">Step 1: firebaseConfig 붙여넣기<a class="headerlink" href="#step-1-firebaseconfig" title="Permanent link">&para;</a></h3>
+<p>Chapter 3에서 Firebase 프로젝트를 만들 때 복사해둔 설정 정보가 있죠? 이제 그걸 코드에 넣을 차례입니다.</p>
+<p><code>index.html</code> 파일을 열고, 아래와 같은 부분을 찾으세요:</p>
+<div class="language-javascript highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1">// 🔽 여기에 본인의 firebaseConfig를 붙여넣으세요</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">firebaseConfig</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">  </span><span class="nx">apiKey</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;여기에-본인-키&quot;</span><span class="p">,</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">  </span><span class="nx">authDomain</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;여기에-본인-도메인&quot;</span><span class="p">,</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">  </span><span class="nx">databaseURL</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://여기에-본인-주소.firebaseio.com&quot;</span><span class="p">,</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">  </span><span class="nx">projectId</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;여기에-본인-프로젝트ID&quot;</span><span class="p">,</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">  </span><span class="nx">storageBucket</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;여기에-본인-버킷&quot;</span><span class="p">,</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">  </span><span class="nx">messagingSenderId</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;여기에-본인-ID&quot;</span><span class="p">,</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">  </span><span class="nx">appId</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;여기에-본인-앱ID&quot;</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="p">};</span>
+</span></code></pre></div>
+<p><strong>"여기에-..."</strong> 부분을 Chapter 3에서 복사한 <strong>본인의 실제 값</strong>으로 교체하세요.</p>
+<blockquote>
+<p>💡 <strong>Config를 못 찾겠다면?</strong> Firebase 콘솔 → 프로젝트 설정(⚙️) → 일반 → 내 앱 → SDK 설정에서 다시 복사할 수 있어요.</p>
+</blockquote>
+<h3 id="step-2">Step 2: 브라우저에서 앱 실행하고 데이터 입력하기<a class="headerlink" href="#step-2" title="Permanent link">&para;</a></h3>
+<ol>
+<li>수정한 <code>index.html</code> 파일을 <strong>더블클릭</strong>하여 브라우저에서 엽니다</li>
+<li>화면에서 다음을 입력하세요:</li>
+<li><strong>학번</strong>: 20250101</li>
+<li><strong>이름</strong>: 홍길동</li>
+<li><strong>과목</strong>: 원하는 과목 선택</li>
+<li><strong>신청 버튼</strong>을 클릭! 🖱️</li>
+</ol>
+<p>"신청이 완료되었습니다" 같은 메시지가 뜨면 일단 성공 신호입니다.</p>
+<h3 id="step-3-firebase">Step 3: Firebase 콘솔에서 데이터 확인하기<a class="headerlink" href="#step-3-firebase" title="Permanent link">&para;</a></h3>
+<p>이제 진짜 저장되었는지 눈으로 확인해볼까요? 👀</p>
+<ol>
+<li><a href="https://console.firebase.google.com">Firebase 콘솔</a>에 접속</li>
+<li>본인의 프로젝트 클릭</li>
+<li>왼쪽 메뉴에서 <strong>Realtime Database</strong> 클릭</li>
+<li>화면에 방금 입력한 <strong>홍길동, 20250101</strong> 데이터가 보이면 🎉 <strong>연동 성공!</strong></li>
+</ol>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>my-project-default-rtdb
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>  └── requests
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>        └── -NxAbC123dEf
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>              ├── name: &quot;홍길동&quot;
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>              ├── studentId: &quot;20250101&quot;
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>              └── subject: &quot;수학&quot;
+</span></code></pre></div>
+<blockquote>
+<p>위처럼 트리 구조로 데이터가 표시됩니다. <code>-NxAbC123dEf</code> 같은 건 Firebase가 자동 생성한 고유 ID예요.</p>
+</blockquote>
+<hr />
+<h2 id="_4">⚠️ 주의할 점<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>databaseURL을 빠뜨리지 마세요!</strong> firebaseConfig 항목 중 <code>databaseURL</code>이 없으면 데이터 저장이 아예 안 됩니다. Firebase 콘솔의 Realtime Database 탭 상단에서 URL을 확인할 수 있어요.</li>
+<li><strong>브라우저 개발자 도구(F12)를 활용하세요.</strong> 신청 버튼을 눌렀는데 아무 반응이 없다면, F12 → Console 탭에서 빨간 에러 메시지를 확인해보세요. 대부분 config 오타가 원인입니다.</li>
+</ul>
+<hr />
+<h2 id="_5">✅ 점검하기<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<p><strong>1. firebaseConfig의 역할은 무엇인가요?</strong></p>
+<details><summary>정답 확인</summary>
+앱이 어떤 Firebase 프로젝트에 연결해야 하는지 알려주는 고유 주소 정보입니다. 이 정보가 있어야 앱이 올바른 데이터베이스를 찾아갈 수 있습니다.
+</details>
+
+<p><strong>2. 신청 버튼을 눌렀는데 Firebase에 데이터가 안 보입니다. 가장 먼저 확인할 것은?</strong></p>
+<details><summary>정답 확인</summary>
+① firebaseConfig 값이 정확히 붙여넣어졌는지 확인 (특히 databaseURL)
+② 브라우저 F12 → Console 탭에서 에러 메시지 확인
+③ Realtime Database 규칙이 읽기/쓰기 허용으로 설정되어 있는지 확인
+</details>
+
+<p><strong>3. Firebase 콘솔에서 저장된 데이터는 어디서 확인하나요?</strong></p>
+<details><summary>정답 확인</summary>
+Firebase 콘솔 → 본인 프로젝트 → 왼쪽 메뉴의 "Realtime Database" 탭에서 확인할 수 있습니다.
+</details>
+
+<hr />
+<h2 id="_6">🔗 다음 장 미리보기<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<p>앱에서 데이터를 <strong>보내는 것</strong>까지 성공했어요! 🎉 다음 장에서는 이 데이터를 <strong>선생님이 확인하고 관리할 수 있는 관리자 화면</strong>을 만들어봅니다. 학생이 신청한 내용을 한눈에 볼 수 있는 화면, 기대되지 않나요?</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../chapter06/" class="btn btn-neutral float-left" title="Firebase Realtime Database 설정하기"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../chapter08/" class="btn btn-neutral float-right" title="Firebase Hosting으로 앱 배포하기">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../chapter06/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../chapter08/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="https://unpkg.com/mermaid@10/dist/mermaid.min.js"></script>
+      <script src="../javascripts/title-link.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
